@@ -1,0 +1,161 @@
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary-50), var(--color-primary-100));
+  padding: var(--spacing-4);
+}
+
+.brandBadge {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+  color: white;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 auto var(--spacing-6);
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+.selectionCard {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-glass);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: var(--spacing-2);
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-8);
+}
+
+.roleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+}
+
+.roleButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8) var(--spacing-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+}
+
+.roleButton:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-50);
+}
+
+.roleIcon {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-3);
+  transition: transform var(--transition-normal);
+}
+
+.roleButton:hover .roleIcon {
+  transform: scale(1.1);
+}
+
+.roleTitle {
+  font-weight: 600;
+  color: var(--color-text-main);
+  font-size: 1.1rem;
+}
+
+/* Form Styles */
+.loginFormCard {
+  background: var(--color-surface);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid var(--color-border);
+}
+
+.animateIn {
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.backButton {
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-6);
+  transition: color var(--transition-fast);
+}
+
+.backButton:hover {
+  color: var(--color-primary-600);
+}
+
+.formHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-6);
+}
+
+.formIcon {
+  font-size: 1.75rem;
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  color: var(--color-text-main);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.inputLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+.submitBtn {
+  margin-top: var(--spacing-4);
+  padding: 0.75rem;
+  font-size: 1rem;
+}
