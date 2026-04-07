@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import api from '../api';
 
 const ApplyLeave = ({ navigate, user, onRequestSubmitted }) => {
   const [formData, setFormData] = useState({
@@ -53,9 +54,8 @@ const ApplyLeave = ({ navigate, user, onRequestSubmitted }) => {
     };
     
     try {
-      const res = await fetch('/api/requests', {
+      const res = await api('/api/requests', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newReq)
       });
       const data = await res.json();

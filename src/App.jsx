@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import api from './api';
 import MainLayout from './components/Layout/MainLayout';
 import Login from './components/Auth/Login';
 import LeaveApprovals from './pages/LeaveApprovals';
@@ -29,7 +30,7 @@ function App() {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('/api/users');
+      const res = await api('/api/users');
       const data = await res.json();
       setUsersState(data);
     } catch (err) {
@@ -39,7 +40,7 @@ function App() {
 
   const fetchRequests = async () => {
     try {
-      const res = await fetch('/api/requests');
+      const res = await api('/api/requests');
       const data = await res.json();
       setPendingRequestsState(data);
     } catch (err) {
@@ -49,9 +50,8 @@ function App() {
 
   const handleLogin = async (role, formData) => {
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await api('/api/auth/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ role, ...formData })
       });
       const data = await res.json();
@@ -70,9 +70,8 @@ function App() {
 
   const handleChangePassword = async (role, formData) => {
     try {
-      const res = await fetch('/api/auth/change-password', {
+      const res = await api('/api/auth/change-password', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ role, userid: formData.userid, dept: formData.dept, oldPassword: formData.password, newPassword: formData.newPassword })
       });
       return await res.json();
@@ -94,9 +93,8 @@ function App() {
 
   const handleUpdateStatus = async (reqId, newStatus) => {
     try {
-      await fetch(`/api/requests/${reqId}/status`, {
+      await api(`/api/requests/${reqId}/status`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus })
       });
       await fetchRequests();

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import api from '../api';
 
 const ManageUsers = ({ user, users, onUsersChanged, navigate }) => {
   const [formData, setFormData] = useState({ name: '', userid: '', dept: user.role === 'principal' ? '' : user.dept, password: 'password123' });
@@ -50,9 +51,8 @@ const ManageUsers = ({ user, users, onUsersChanged, navigate }) => {
     };
 
     try {
-      const res = await fetch('/api/users', {
+      const res = await api('/api/users', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
       const data = await res.json();
@@ -70,7 +70,7 @@ const ManageUsers = ({ user, users, onUsersChanged, navigate }) => {
   const handleDelete = async (idTarget) => {
     if (confirm('Delete this user? This action cannot be undone.')) {
       try {
-        await fetch(`/api/users/${targetRole}/${idTarget}`, { method: 'DELETE' });
+        await api(`/api/users/${targetRole}/${idTarget}`, { method: 'DELETE' });
         await onUsersChanged();
       } catch (err) {
         alert('Server unreachable. Is the backend running?');
